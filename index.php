@@ -228,29 +228,82 @@ foreach ($week as $key => $item) {
 }
 */
 /* #30
-
-*/
-$arr = [
-  'cms'=>['joomla', 'wordpress', 'drupal'],
-  'colors'=>['blue'=>'блакитний', 'red'=>'червоний', 'green'=>'зелений']
-];
+$arr = ['cms'=>['joomla', 'wordpress', 'drupal'], 'colors'=>['blue'=>'блакитний', 'red'=>'червоний', 'green'=>'зелений']];
 $result = "";
 
-foreach ($arr as $key => $item) {
-    $i = 0;
-  if (($key === 'cms' && $item === 'joomla') || ($key === 'cms' && $item === 'drupal')) {
-      $result .= $item . ", ";
+foreach ($arr['cms'] as $item) {
+  if ($item === 'joomla') {
+    $result .= "joomla,";
   }
-  print_r($item[$i]);
-  $i++;
+  else if ($item === 'drupal') {
+    $result .= "drupal,";
+  }
+}
+
+foreach ($arr['colors'] as $item) {
+  if ($item === 'зелений') {
+    $result .= "зелений,";
+  }
+  else if ($item === 'червоний') {
+    $result .= "червоний,";
+  }
+}
+
+if ($result{strlen($result)-1} === ',') {
+  $str = substr($result,0,-1);
 }
 
 echo $result;
+*/
 /* #31
+$arr = [
+  'ua' => ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'],
+  'en' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+];
+$result = "";
 
+foreach ($arr['ua'] as $item) {
+    if ($item === 'Понеділок') {
+        $result .= "$item ";
+    }
+}
+
+foreach ($arr['en'] as $item) {
+  if ($item === 'Wednesday') {
+    $result .= "$item ";
+  }
+}
+
+echo  $result;
 */
 /* #32
+$arr = [
+  'ua' => ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'],
+  'en' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+];
+$lang = 'ua';
+$day = 3;
+$result = "";
 
+if ($lang === 'en') {
+    $day--;
+
+    foreach ($arr['en'] as $key => $item) {
+      if ($key === $day) {
+          $result .= $item;
+      }
+    }
+} else if($lang === 'ua') {
+  $day--;
+
+  foreach ($arr['ua'] as $key => $item) {
+    if ($key === $day) {
+      $result .= $item;
+    }
+  }
+}
+
+echo $result;
 */
 ?>
 </body>
